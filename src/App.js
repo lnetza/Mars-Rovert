@@ -1,6 +1,6 @@
 import React,{Fragment,useState,useEffect} from 'react';
 import Formulario from './Components/Formulario';
-import Data from './Components/Data';
+import ListarFotos from './Components/ListarFotos';
 
 function App() {
 
@@ -13,7 +13,7 @@ function App() {
   const {sol, fecha, camara} = busqueda;
 
   const [consultar, guardarConsultar] =useState(false);
-  const [resultado, guardarResultado] = useState({});
+  const [resultado, guardarResultado] = useState([]);
 
   useEffect(() => {
 
@@ -23,17 +23,12 @@ function App() {
         const URL=`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=${sol}&camera=${camara}&earth_date=${fecha}&api_key=${apiID}`;
 
         const respuesta = await fetch(URL);
-        const resultado = await respuesta.json();
+        const datosRespuesta = await respuesta.json();
         
-        /*
-        const arrayresultado =[];
-        
-        for(let i=0; i<resultado.photos.length;i++){
-          arrayresultado.push(resultado.photos[i].img_src);
-          
-      }*/
 
-        guardarResultado(resultado);
+        guardarResultado(datosRespuesta.photos);
+
+        guardarConsultar(false);
       }
     }
     consultarAPI();
@@ -56,9 +51,8 @@ function App() {
             />
           </div>
 
-           <div className="col m6 ">
-            <h2>Resultado</h2>
-            <Data
+           <div className="col m6">
+            <ListarFotos
               resultado={resultado}
             />
           </div>
