@@ -1,3 +1,17 @@
+Esta app consulta imágenes recopiladas por los rovers Curiosity, Opportunity y Spirit de la NASA en Marte.  
+Las fotos están organizadas por el sol (rotación o día marciano) en el que se tomaron, contando desde la fecha de aterrizaje del rover. Una foto tomada en el sol marciano número 1000 de Curiosity explorando Marte, por ejemplo, tendrá un atributo de sol de 1000. Si, en cambio, se prefiere buscar por la fecha de la Tierra en la que se tomó la foto, también es posible. Junto con la consulta por fecha, los resultados también pueden ser filtrados por la cámara con la que se tomarón cada cámara tiene una función y una perspectiva única, y se denominan de la siguiente manera:     
+
+Cámara delantera para evitar peligros     
+Cámara trasera para evitar peligros     
+Cámara de mástil     
+Complejo de cámara y química     
+Lector de imágenes Mars Hand Lens     
+Generador de imágenes Mars Descent     
+Cámara de navegación     
+Cámara panorámica     
+Espectrómetro de emisión térmica en miniatura (Mini-TES)
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
