@@ -73,6 +73,7 @@ const Formulario = ({busqueda,guardarBusqueda,guardarConsultar,guardarCaso}) => 
                                 type="text" 
                                 value={sol}
                                 onChange={handleChange}
+                                placeholder="Ejemplo: 223"
                             />
                             <label htmlFor="sol">Sol Marciano:</label>
                         </div>
