@@ -49,7 +49,7 @@ const About = () => {
             <center>
 
             
-              <a href="https://bit.ly/3ihS9tP" target="_blank">
+              <a href="https://bit.ly/3jbcaU6" target="_blank">
               <Github
                 src={git}
               />
