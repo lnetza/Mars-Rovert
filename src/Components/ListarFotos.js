@@ -3,10 +3,10 @@ import Fotos from './Fotos';
 
 const ListarFotos = ({resultado}) => (
     <div className="row">
-        {resultado.map(data=>(
+        {resultado.map(informacion=>(
             <Fotos
-                key={data.id}
-                data={data}
+                key={informacion.id}
+                informacion={informacion}
             />
         ))}
     </div>

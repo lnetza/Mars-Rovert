@@ -1,9 +1,13 @@
-import React from 'react';
+import React,{useState} from 'react';
+import Error from './Error';
 
-const Formulario = ({busqueda,guardarBusqueda,consultar,guardarConsultar}) => {
+const Formulario = ({busqueda,guardarBusqueda,guardarConsultar,guardarCaso}) => {
 
     
     const {sol,camara, fecha}=busqueda;
+
+    
+    const [errorFormulario, guardarErrorFormulario]=useState(false);
 
     //Captura el cambio de valores en los campos
     const handleChange= event=>{
@@ -18,15 +22,49 @@ const Formulario = ({busqueda,guardarBusqueda,consultar,guardarConsultar}) => {
     const handleSubmmit = e =>{
         e.preventDefault();
 
-        guardarConsultar(true);
+        //validar
+         if (fecha !=='' && camara !=='' && sol !==''){
+            guardarCaso('all');
+            guardarConsultar(true);
+        }else if(sol !=='' && camara.trim() ==='' && fecha ===''){
+            guardarCaso('sol');
+            guardarConsultar(true);
+            return;
+        }else if(fecha !=='' && camara.trim() ==='' && sol ===''){
+            guardarCaso('fecha');
+            guardarConsultar(true);
+            return;
+        } else if (sol.trim()==='' && fecha.trim()==='' && camara !==''){
+            guardarCaso('soloCamara');
+            guardarConsultar(true);
+            return;
+        }else if (sol!=='' && fecha!=='' && camara.trim()===''){
+            guardarCaso('solYFecha');
+            guardarConsultar(true);
+            return;
+        }else if (sol!=='' && camara!=='' && fecha.trim() ===''){
+            guardarCaso('solYCamara');
+            guardarConsultar(true);
+            return;
+        }else if(camara!=='' && fecha!==''&& sol.trim()===''){
+            guardarCaso('camaraYFecha');
+            guardarConsultar(true);
+            return;
+        }else if(camara.trim()==='' && fecha.trim()===''&& sol.trim()===''){
+            guardarErrorFormulario(true);
+            return;
+        }
+
+
+        
     }
 
     return ( 
         
-        <div className="row"> 
+        <div className="row">
            <form
                 onSubmit={handleSubmmit}
-           >   
+           >        {(errorFormulario)? <Error mensaje="Selecciona al menos un campo"/>:null}
                     <div className="row">
                         <div className="input-field col s3">
                             <input  

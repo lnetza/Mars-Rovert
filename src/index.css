@@ -11,3 +11,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.galeria img {
+  box-shadow: 0 8px 15px -4px rgba(0,0,0,.9);
+  
+}
+
