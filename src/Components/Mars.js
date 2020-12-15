@@ -1,4 +1,5 @@
 import React,{Fragment,useState,useEffect} from 'react';
+import {API_URL,API_KEY} from '../config';
 import Formulario from './Formulario';
 import ListarFotos from './ListarFotos';
 import Error from './Error';
@@ -27,13 +28,11 @@ function Mars() {
     
 
     const consultarAPI = async()=>{
-      const apiID='Zd0CREJIccbZtbJNBaeDm0wey9EAgharcDnOM0cL';
 
       if (consultar && caso === 'sol'){
         
-        const URL=`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=${sol}&api_key=${apiID}`;  
+        const URL=`${API_URL}sol=${sol}&api_key=${API_KEY}`;  
 
-        //const URL=`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=${sol}&camera=${camara}&earth_date=${fecha}&api_key=${apiID}`;
 
         const respuesta = await fetch(URL);
         const datosRespuesta = await respuesta.json();
@@ -50,7 +49,7 @@ function Mars() {
       }
       
       if (consultar && caso === 'fecha'){
-        const URL=`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?&earth_date=${fecha}&api_key=${apiID}`;  
+        const URL=`${API_URL}&earth_date=${fecha}&api_key=${API_KEY}`;  
 
         
         const respuesta = await fetch(URL);
@@ -68,7 +67,7 @@ function Mars() {
       }
 
       if (consultar && caso === 'all'){
-        const URL=`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=${sol}&camera=${camara}&earth_date=${fecha}&api_key=${apiID}`;
+        const URL=`${API_URL}sol=${sol}&camera=${camara}&earth_date=${fecha}&api_key=${API_KEY}`;
 
         
         const respuesta = await fetch(URL);
@@ -86,7 +85,7 @@ function Mars() {
       }
 
       if (consultar && caso === 'solYFecha'){
-        const URL=`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=${sol}&earth_date=${fecha}&api_key=${apiID}`;
+        const URL=`${API_URL}sol=${sol}&earth_date=${fecha}&api_key=${API_KEY}`;
 
         
         const respuesta = await fetch(URL);
@@ -103,7 +102,7 @@ function Mars() {
         }
       }
       if (consultar && caso === 'solYCamara'){
-        const URL=`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=${sol}&camera=${camara}&api_key=${apiID}`;
+        const URL=`${API_URL}sol=${sol}&camera=${camara}&api_key=${API_KEY}`;
 
         
         const respuesta = await fetch(URL);
@@ -120,7 +119,7 @@ function Mars() {
         }
       }
       if (consultar && caso === 'camaraYFecha'){
-        const URL=`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?camera=${camara}&earth_date=${fecha}&api_key=${apiID}`;
+        const URL=`${API_URL}camera=${camara}&earth_date=${fecha}&api_key=${API_KEY}`;
 
         
         const respuesta = await fetch(URL);
