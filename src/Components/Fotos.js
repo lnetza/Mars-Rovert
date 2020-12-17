@@ -42,24 +42,18 @@ const Fotos = ({informacion}) => {
 
     return ( 
 
-        <div className="galeria">
+        <div className="galeria" >
                 <div className="col s3 m3">
-                    <img className="responsive-img materialboxed" src={img_src} />
-                    
-                    <span className="card-title">{camera.full_name}</span>
-                    <p>Sol Marciano:{sol}</p>
-                    <span className="card-title">Fecha en tierra: {earth_date}</span>
-                    <button
-                        type="button"
-                        className="btn btn-block btn-primary"
+                    <img className="responsive-img materialboxed" 
+                        src={img_src} 
                         onClick={() =>{
                             handleOpen();
                         }}
-                    >
-                        Ver imagen
-                    </button>
-                    <p>Rover:{rover.name}</p>
-                    
+                    />
+                    <span className="card-title">{camera.full_name}</span>
+                    <p>Sol Marciano:{sol}</p>
+                    <span className="card-title">Fecha en tierra: {earth_date}</span>
+
                     <Modal
                         open={open}
                         onClose={()=>{
@@ -67,7 +61,8 @@ const Fotos = ({informacion}) => {
                         }}
                     >
                         <div style={modalStyle} className={classes.paper}>
-                            <img className="responsive-img materialboxed" src={img_src} />
+                            <img className="responsive-img" src={img_src} />
+                            <p>Rover:{rover.name}</p>
                         </div>
                     </Modal>
                 </div>
